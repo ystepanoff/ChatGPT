@@ -1,4 +1,4 @@
-# chatgpt_unofficial
+# ChatGPT
 Unofficial API wrapping for OpenAI ChatGPT: http://chat.openai.com/
 
 # Example usage:
