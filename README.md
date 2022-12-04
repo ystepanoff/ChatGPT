@@ -4,7 +4,8 @@ Unofficial API wrapping for OpenAI ChatGPT: http://chat.openai.com/
 # Example usage:
 1. Clone the project.
 2. Create virtual environment and install requirements.
-3. 
+3. Install Chrome binary and ChromeDriver.
+4. 
 
 ```
 $ python example.py --email <OpenAI e-mail> --password <OpenAI password> 
