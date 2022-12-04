@@ -44,6 +44,7 @@ class ChatGPT:
             lambda x: x.execute_script("return document.readyState === 'complete'")
         )
         cookies = {cookie['name']: cookie['value'] for cookie in driver.get_cookies()}
+        driver.close()
         return cookies
 
     def get_access_token(self) -> str:
