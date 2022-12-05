@@ -1,4 +1,6 @@
 # ChatGPT
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/selenium?style=plastic) ![PyPI](https://img.shields.io/pypi/v/selenium?label=selenium&style=plastic) ![PyPI](https://img.shields.io/pypi/v/requests?label=requests&style=plastic)
+
 Unofficial API wrapping for OpenAI ChatGPT: http://chat.openai.com/
 
 # Example usage:
