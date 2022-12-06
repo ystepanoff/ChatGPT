@@ -1,5 +1,5 @@
 # ChatGPT
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/selenium?style=plastic) ![PyPI](https://img.shields.io/pypi/v/selenium?label=selenium&style=plastic) ![PyPI](https://img.shields.io/pypi/v/requests?label=requests&style=plastic)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/selenium?style=plastic) ![PyPI](https://img.shields.io/pypi/v/selenium?label=selenium&style=plastic) ![PyPI](https://img.shields.io/pypi/v/requests?label=requests&style=plastic) ![GitHub](https://img.shields.io/github/license/ystepanoff/ChatGPT?style=plastic)
 
 Unofficial API wrapping for OpenAI ChatGPT: http://chat.openai.com/
 
