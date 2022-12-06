@@ -21,15 +21,20 @@ class ChatGPT:
         self.access_token = None
         self.conversation_id = str(uuid4())
         self.parent_message_id = str(uuid4())
+        self.user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15'
 
     def login(self) -> Dict[str, str]:
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('--headless')
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
+        chrome_options.add_argument('user-agent={}'.format(self.user_agent))
         driver = webdriver.Chrome('chromedriver', chrome_options=chrome_options)
         driver.get(self.urls['login'])
-        driver.find_element(By.XPATH, "//button[contains(.,'Log in')]").click()
+        element = WebDriverWait(driver, timeout=10).until(
+            EC.presence_of_element_located((By.XPATH, "//button[contains(.,'Log in')]"))
+        )
+        element.click()
         element = WebDriverWait(driver, timeout=10).until(
             EC.presence_of_element_located((By.XPATH, "//input[@name='username']"))
         )
@@ -49,7 +54,10 @@ class ChatGPT:
 
     def get_access_token(self) -> str:
         cookies = self.login()
-        response = self.session.get(self.urls['session'], cookies=cookies)
+        headers = {
+            'User-Agent': self.user_agent,
+        }
+        response = self.session.get(self.urls['session'], cookies=cookies, headers=headers)
         data = json.loads(response.text)
         return data['accessToken']
 
@@ -57,7 +65,8 @@ class ChatGPT:
         if self.access_token is None:
             self.access_token = self.get_access_token()
         headers = {
-            'Authorization': 'Bearer {}'.format(self.access_token)
+            'Authorization': 'Bearer {}'.format(self.access_token),
+            'User-Agent': self.user_agent,
         }
         message_id = str(uuid4())
         data = {
